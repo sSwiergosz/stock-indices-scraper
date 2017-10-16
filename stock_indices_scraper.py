@@ -28,11 +28,17 @@ while end == False:
 		price_container = soup.find('div', attrs={'class': 'price'})
 		# change_container = soup.find('div', attrs={'class': 'change-container'})
 
-		name = name_container.text.strip()
-		price = price_container.text
+		if name_container is not None:
+			
+			name = name_container.text.strip()
+			price = price_container.text
 
-		print(name, '-', price)
+			print(name, '-', price)
 
-	decision = input("\nDo you want to look for the other stock indices? [y/N]: ")
+		else:
+
+			print("\nThe company name abbreviation wasn\'t recognized. Try again.\n")
+
+	decision = input("Do you want to look for the other stock indices? [y/N]: ")
 	if decision == 'N':
 		end = True
